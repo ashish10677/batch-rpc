@@ -91,13 +91,13 @@ func getRequests(client *rpc.Client, contractAddress common.Address, parsedABI a
 			return nil, err
 		}
 		request := unpackedData[0].(struct {
-			RequestId            [4]uint8       "json:\"requestId\""
+			RequestId            [4]byte        "json:\"requestId\""
 			RequesterAddress     common.Address "json:\"requesterAddress\""
 			TargetAddress        common.Address "json:\"targetAddress\""
 			TargetChainDomain    *big.Int       "json:\"targetChainDomain\""
 			RequestCreationBlock *big.Int       "json:\"requestCreationBlock\""
 			RequestCreationTime  *big.Int       "json:\"requestCreationTime\""
-			Message              []uint8        "json:\"message\""
+			Message              []byte         "json:\"message\""
 		})
 		requests = append(requests, request)
 	}
